@@ -24,4 +24,5 @@ admin.site.index_title = "Welcome to Student Management Portal"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('students.urls'))
 ]
