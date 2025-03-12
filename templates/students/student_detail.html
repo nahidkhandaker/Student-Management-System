@@ -1,0 +1,71 @@
+{% extends 'students/base.html' %}
+
+{% block title %}{{ student.name }} - Details{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-white py-3">
+                    <h2 class="card-title m-0">Student Details</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-3 fw-bold text-muted">Full Name:</div>
+                        <div class="col-md-9 fs-5">{{ student.name }}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3 fw-bold text-muted">Email Address:</div>
+                        <div class="col-md-9">
+                            <a href="mailto:{{ student.email }}">{{ student.email }}</a>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3 fw-bold text-muted">Phone Number:</div>
+                        <div class="col-md-9">
+                            <a href="tel:{{ student.phone }}">{{ student.phone }}</a>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3 fw-bold text-muted">Course:</div>
+                        <div class="col-md-9">{{ student.course }}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3 fw-bold text-muted">Status:</div>
+                        <div class="col-md-9">
+                            {% if student.is_active %}
+                                <span class="badge bg-success">Active</span>
+                            {% else %}
+                                <span class="badge bg-danger">Inactive</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3 fw-bold text-muted">Registered On:</div>
+                        <div class="col-md-9">{{ student.created_at|date:"F d, Y - H:i" }}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3 fw-bold text-muted">Last Updated:</div>
+                        <div class="col-md-9">{{ student.updated_at|date:"F d, Y - H:i" }}</div>
+                    </div>
+                </div>
+                <div class="card-footer bg-white">
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'student-list' %}" class="btn btn-secondary btn-icon">
+                            <i class="bi bi-arrow-left"></i> Back to List
+                        </a>
+                        <div>
+                            <a href="{% url 'student-update' student.id %}" class="btn btn-warning btn-icon text-white">
+                                <i class="bi bi-pencil"></i> Edit
+                            </a>
+                            <a href="{% url 'student-delete' student.id %}" class="btn btn-danger btn-icon">
+                                <i class="bi bi-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

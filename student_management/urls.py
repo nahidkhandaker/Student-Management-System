@@ -20,9 +20,9 @@ from django.urls import path, include
 # Customize admin site
 admin.site.site_header = "Student Management Admin"
 admin.site.site_title = "Student Management Portal"
-admin.site.index_title = "Welcome to Student Management Portal"
+admin.site.index_title = "Welcome to Student Management System"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('students.urls'))
+    path('', include('students.urls')),
 ]

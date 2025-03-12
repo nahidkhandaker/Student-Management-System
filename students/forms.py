@@ -29,13 +29,11 @@ class StudentForm(forms.ModelForm):
         }
     
     def clean_email(self):
-        email = self.cleared_data.get('email')
+        email = self.cleaned_data.get('email')
         instance_id = getattr(self.instance, 'id', None)
         
         # Check if email exists but ignore current instance (for updates)
-        if Student.objects.filter(email=email).execute(id=instance_id).exists():
+        if Student.objects.filter(email=email).exclude(id=instance_id).exists():
             raise forms.ValidationError("This email is already registered.")
         
         return email
-    
-        
