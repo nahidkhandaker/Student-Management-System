@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-fnv$25i5=i&)7x1i@3fg8$wv15ci$2=vv_6wo+__79b!n@r3_%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['Student-Management-System.onrender.com']
+ALLOWED_HOSTS = []
 
 # Message tags for Boostrap
 
@@ -128,7 +128,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
